@@ -49,15 +49,14 @@ Maizuo Spring MVC Project Snapshot Create By Table.
 
 	7.  补充说明:
 			Dao         主要做数据库的交互工作
-            Entity      是模型,存放你的实体类
             Service     做相应的业务逻辑处理
-            controller  是一个控制器
-            Entity      层就是对应的数据库表的实体类。
+            controller  控制器层,负责请求转发等
+            Entity      是模型层,存放你的实体类,就是对应的数据库表的实体类。
             Dao层：是使用了包Hibernate或JDBC连接数据库、操作数据库（增删改查）
             Service层：引用对应的Dao数据库操作，在这里可以编写自己需要的代码（比如简单的判断）
             Action层：引用对应的Service层，在这里可结合Struts的配置文件(本项目中通过Spring MVC相关逻辑进行处理)，
-            跳转到指定的页面，也能接受页面传递的请求数据，也可以做些计算处理。
-            相关操作会被注入到Spring的配置文件中，Spring把这些联系起来，成为一个整体。
+	            跳转到指定的页面，也能接受页面传递的请求数据，也可以做些计算处理。
+	            相关操作会被注入到Spring的配置文件中，Spring把这些联系起来，成为一个整体。
 
 8.  数据库相关:
 		1.  /resources/jdbc.properties中配置有示例数据库相关信息;
@@ -82,3 +81,16 @@ Maizuo Spring MVC Project Snapshot Create By Table.
 		2.  访问http://localhost即可以演示数据查询,页面跳转,thymeleaf页面数据渲染等逻辑;
 
 		3.  访问http://localhost/user/1即可以演示数据查询,通过com.maizuo.domain.Result返回JSON格式数据等逻辑;
+
+12. 同步服务器端git项目代码:
+		初次通过git clone ssh://git@192.168.1.203:10000/springmvc_template.git
+		拉取到本来的代码为样板代码;
+
+		每次新启一个项目,git管理员会重新生成一个git源;
+
+		请先删除刚才通过git clone拉取到本地的项目目录(默认为springmvc_template,
+		可以根据项目自定义)中的.git文件夹;
+
+		然后根据git管理员提供的git源地址,拉取正式项目的git记录,
+		将刚才拉取的样板文件全部放到正式项目的文件夹,
+		执行git上传等操作既可完成与服务器端git项目代码的同步;
