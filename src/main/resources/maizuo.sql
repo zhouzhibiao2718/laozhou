@@ -4,7 +4,7 @@ Navicat MySQL Data Transfer
 Source Server         : localhost
 Source Server Version : 50612
 Source Host           : localhost:3306
-Source Database       : crm
+Source Database       : maizuo
 
 Target Server Type    : MYSQL
 Target Server Version : 50612
