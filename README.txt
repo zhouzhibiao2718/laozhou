@@ -50,7 +50,7 @@ Maizuo Spring MVC Project Snapshot Create By Table.
 	7.  补充说明:
 			Dao         主要做数据库的交互工作
             Service     做相应的业务逻辑处理
-            controller  控制器层,负责请求转发等
+            Controller  控制器层,负责请求转发等
             Entity      是模型层,存放你的实体类,就是对应的数据库表的实体类。
             Dao层：是使用了包Hibernate或JDBC连接数据库、操作数据库（增删改查）
             Service层：引用对应的Dao数据库操作，在这里可以编写自己需要的代码（比如简单的判断）
@@ -76,7 +76,7 @@ Maizuo Spring MVC Project Snapshot Create By Table.
 		默认Server容器为jetty,相关配置在pom.xml最下方;
 
 11. 启动示例项目:
-		1.  建立好数据库,即可直接启动项目运行,不出意外的话,在正常启动项目后;
+		1.  建立好数据库,即可直接启动项目运行;
 
 		2.  访问http://localhost即可以演示数据查询,页面跳转,thymeleaf页面数据渲染等逻辑;
 
