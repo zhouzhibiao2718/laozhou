@@ -61,9 +61,9 @@ Maizuo Spring MVC Project Snapshot Create By Table.
 8.  数据库相关:
 		1.  /resources/jdbc.properties中配置有示例数据库相关信息;
 
-		2.  /resources/maizuo.sql为数据库构表sql;
+		2.  /resources/springmvc.sql为数据库构表sql;
 
-		3.	示例的数据库名为maizuo;
+		3.	示例的数据库名为springmvc;
 
 		4.  数据库默认连接的是mysql;
 
