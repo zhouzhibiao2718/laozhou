@@ -94,3 +94,9 @@ Maizuo Spring MVC Project Snapshot Create By Table.
 		然后根据git管理员提供的git源地址,拉取正式项目的git记录,
 		将刚才拉取的样板文件全部放到正式项目的文件夹,
 		执行git上传等操作既可完成与服务器端git项目代码的同步;
+
+13. 静态文件目录:
+		/App
+			/css    css文件
+			/image  图片文件
+			/widget javascript文件
