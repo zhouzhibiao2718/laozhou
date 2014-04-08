@@ -98,5 +98,9 @@ Maizuo Spring MVC Project Snapshot Create By Table.
 13. 静态文件目录:
 		/App
 			/css    css文件
+				/bootstrap boostrap目录 项目基础css库采用bootstrap 无需另外添加css reset等代码
 			/image  图片文件
+			/lib    javascript公共库目录
+				/jquery jquery目录
+				/plugin 相关js插件目录
 			/widget javascript文件
