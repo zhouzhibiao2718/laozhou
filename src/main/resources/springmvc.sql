@@ -13,9 +13,6 @@ File Encoding         : 65001
 Date: 2014-04-03 22:07:00
 */
 
-DROP DATABASE IF EXISTS springmvc;
-CREATE DATABASE springmvc DEFAULT CHARACTER SET utf8;
-USE springmvc;
 
 SET FOREIGN_KEY_CHECKS=0;
 
