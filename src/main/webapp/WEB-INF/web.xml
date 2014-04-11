@@ -56,7 +56,6 @@
 	-->
 
 	<!--############################### SiteMesh ########################################-->
-	<!--
 	<filter>
 		<filter-name>sitemeshFilter</filter-name>
 		<filter-class>org.sitemesh.config.ConfigurableSiteMeshFilter</filter-class>
@@ -67,7 +66,6 @@
 		<dispatcher>REQUEST</dispatcher>
 		<dispatcher>FORWARD</dispatcher>
 	</filter-mapping>
-	-->
 
 	<!--#######################################################################-->
 	<listener>
