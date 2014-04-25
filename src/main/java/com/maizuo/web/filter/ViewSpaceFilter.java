@@ -13,12 +13,10 @@ public class ViewSpaceFilter implements Filter {
 	private static final String FILTERED_REQUEST = "@@session_context_filtered_request";
 
 	// ① 需要登录即可访问的URI资源
-	private static final String[] INHERENT_URIS = { "/add",
-			"/save", "/edit", "/update","/delete"};
+	private static final String[] INHERENT_URIS = {"/add", "/save", "/edit", "/update", "/delete"};
 
 	// ② 执行过滤
-	public void doFilter(ServletRequest request, ServletResponse response,
-			FilterChain chain) throws IOException, ServletException {
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
 		// ②-1 保证该过滤器在一次请求中只被调用一次
 		if (request != null && request.getAttribute(FILTERED_REQUEST) != null) {
@@ -31,8 +29,7 @@ public class ViewSpaceFilter implements Filter {
 			User userContext = getSessionUser(httpRequest);
 
 			// ②-3 用户未登录, 且当前URI资源需要登录才能访问
-			if (userContext == null
-					&& isURILogin(httpRequest.getRequestURI(), httpRequest)) {
+			if (userContext == null && isURILogin(httpRequest.getRequestURI(), httpRequest)) {
 				String toUrl = httpRequest.getRequestURL().toString();
 				if (!StringUtils.isEmpty(httpRequest.getQueryString())) {
 					toUrl += "?" + httpRequest.getQueryString();
@@ -53,12 +50,14 @@ public class ViewSpaceFilter implements Filter {
 	public void init(FilterConfig filterConfig) throws ServletException {
 
 	}
-   /**
-    * 当前URI资源是否需要登录才能访问
-    * @param requestURI
-    * @param request
-    * @return
-    */
+
+	/**
+	 * 当前URI资源是否需要登录才能访问
+	 *
+	 * @param requestURI
+	 * @param request
+	 * @return
+	 */
 	private boolean isURILogin(String requestURI, HttpServletRequest request) {
 		for (String uri : INHERENT_URIS) {
 			if (requestURI != null && requestURI.indexOf(uri) >= 0) {
