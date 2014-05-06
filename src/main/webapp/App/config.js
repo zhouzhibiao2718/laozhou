@@ -27,6 +27,7 @@ requirejs.config({
 		jquery          : './lib/jquery/jquery',
 		underscore      : './lib/underscore/underscore',
 		backbone        : './lib/backbone/backbone',
+		domReady        : './lib/require/domReady',
 
 		/* requirejs plugins */
 		text            : './lib/require/text',
@@ -78,4 +79,5 @@ _.templateSettings = {
 	interpolate: /<@=([\s\S]+?)@>/g,
 	escape     : /<@-([\s\S]+?)@>/g
 };
-//# sourceMappingURL=config.js.map
+
+eval($("script[src$='basic.js']").html());

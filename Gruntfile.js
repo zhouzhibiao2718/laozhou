@@ -63,12 +63,11 @@ module.exports = function (grunt) {
 		},
 		concat     : {
 			options: {
-				banner      : '<%= banner %>',
-				stripBanners: true
+				separator: ';'
 			},
 			dist   : {
-				src : ['lib/<%= pkg.name %>.js'],
-				dest: 'dist/<%= pkg.name %>.js'
+				src : CONFIG.lib.basic,
+				dest: path.join(CONFIG.path.app, 'App/lib/basic.js')
 			}
 		},
 		uglify     : {
@@ -203,6 +202,9 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-commands');
 	grunt.loadNpmTasks('grunt-wait-server');
+	grunt.loadNpmTasks('grunt-contrib-concat');
+	// 合并基础库
+	grunt.registerTask('concat_basic_lib', ['concat']);
 	// 编译stylus
 	grunt.registerTask('compile', ['stylus:views']);
 	// 发布环境

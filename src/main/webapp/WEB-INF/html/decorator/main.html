@@ -34,11 +34,6 @@
 	<div th:include="decorator/footer" th:remove="tag"></div>
 
 </div>
-
-
-<script type="text/javascript" th:inline="javascript">
-
-
-</script>
+<script src="/App/lib/basic.js">require([$('meta[name=view]').attr('content')]);</script>
 </body>
 </html>

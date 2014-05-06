@@ -1,9 +1,20 @@
 {
 	"path": {
-		"app"    : "./src/main/webapp/",
-		"product": "./src/main/product/",
-		"cssHome":"./src/main/webapp/App/css/view",
-		"bootstrap":"./src/main/webapp/App/css/bootstrap/css/bootstrap.css"
+		"app"      : "./src/main/webapp/",
+		"product"  : "./src/main/product/",
+		"cssHome"  : "./src/main/product/App/css/view",
+		"bootstrap": "./src/main/product/App/css/bootstrap/css/bootstrap.css"
+	},
+	"lib" : {
+		"basic": [
+			"./src/main/webapp/App/lib/jquery/jquery.js",
+			"./src/main/webapp/App/lib/underscore/underscore.js",
+			"./src/main/webapp/App/lib/underscore/underscore.string.js",
+			"./src/main/webapp/App/lib/underscore/string.js",
+			"./src/main/webapp/App/lib/backbone/backbone.js",
+			"./src/main/webapp/App/lib/require/require.js",
+			"./src/main/webapp/App/config.js"
+		]
 	},
 	"port": 80
 }
