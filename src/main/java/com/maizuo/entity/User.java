@@ -1,11 +1,14 @@
 package com.maizuo.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import javax.persistence.*;
 
 /**
  * Created by Table on 2014/4/3.
  */
 @Entity
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class User {
     private int id;
     private String account;

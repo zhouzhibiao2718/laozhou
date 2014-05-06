@@ -1,5 +1,8 @@
 package com.maizuo.domain;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Result {
 
 	private int status;   //数据请求状态　　　0：成功　　　　-100未登陆　-101 系统故障
