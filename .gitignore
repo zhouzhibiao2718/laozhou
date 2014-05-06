@@ -10,3 +10,8 @@
 *.ear
 /target
 /out
+*.log
+/src/main/product
+/src/main/webapp/App/css/view/**/**.css
+/src/main/webapp/App/view/**/**.js
+*.map

@@ -27,13 +27,14 @@ public class IndexController extends BaseController {
 	public String index(HttpServletRequest request, ModelMap m) {
 		User user = userService.getUserById(1);
 		m.put("user", user);
-		return "/index";
+		return "view/index";
 	}
 
 	@RequestMapping("/user/{userId}")
 	@ResponseBody
 	public Result user(HttpServletRequest request, ModelMap mm, @PathVariable int userId) {
 		User user = userService.getUserById(userId);
+		System.out.println("拉取用户数据成功");
 		if (user.getId() > 0) {
 			return result(0, user, "拉取用户数据成功");
 		} else {

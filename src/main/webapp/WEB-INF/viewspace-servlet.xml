@@ -13,10 +13,6 @@
 
 	<context:component-scan base-package="com.maizuo.web"/>
 
-	<mvc:annotation-driven/>
-
-	<mvc:default-servlet-handler/>
-
 	<!--静态文件目录,该目录下存放css,images,js相关静态文件-->
 	<mvc:resources mapping="/App/**" location="/App/"/>
 
@@ -29,7 +25,7 @@
 
 	<mvc:annotation-driven>
 		<mvc:message-converters register-defaults="true">
-			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" p:supportedMediaTypes="*/*">
+			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" p:supportedMediaTypes="application/json;charset=UTF-8">
 				<property name="objectMapper">
 					<bean class="com.fasterxml.jackson.databind.ObjectMapper">
 						<property name="serializationInclusion">
@@ -40,6 +36,10 @@
 			</bean>
 		</mvc:message-converters>
 	</mvc:annotation-driven>
+
+	<mvc:annotation-driven/>
+
+	<mvc:default-servlet-handler/>
 
 	<bean id="templateResolver" class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
 		<property name="characterEncoding" value="UTF-8"/>

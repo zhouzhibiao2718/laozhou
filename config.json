@@ -1,0 +1,9 @@
+{
+	"path": {
+		"app"    : "./src/main/webapp/",
+		"product": "./src/main/product/",
+		"cssHome":"./src/main/webapp/App/css/view",
+		"bootstrap":"./src/main/webapp/App/css/bootstrap/css/bootstrap.css"
+	},
+	"port": 80
+}
