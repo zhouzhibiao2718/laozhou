@@ -104,3 +104,9 @@ Maizuo Spring MVC Project Snapshot Create By Table.
 				/jquery jquery目录
 				/plugin 相关js插件目录
 			/widget javascript文件
+
+14. 更新日志:
+		2014-04-25: 新建了dao分支,演示了Hibernate泛型DAO的使用,具体代码逻辑请查看dao分支;
+		2014-05-06: 将jackson的版本升级到了2.3.3,处理了通@ResponseBody往前台写json格式数据未处理字段返回NULL的问题,
+					具体可以对照com.maizuo.domain.Result和com.maizuo.entity.User,即在相应的转JSON实体类上,添加
+					@JsonInclude(JsonInclude.Include.NON_NULL)注解;
