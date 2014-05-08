@@ -2,25 +2,11 @@
 module.exports = function (grunt) {
 	var fs = require('fs');
 	var path = require('path');
-	var cssCombo = require('css-combo');
+	var helper = require('./Helper');
 	var CONFIG = grunt.file.readJSON('config.json');
 	if (!CONFIG) {
 		throw new Error('missing config.json');
 	}
-	var build = {
-		modules: []
-	};
-	(function (build) {
-		var viewPath = path.join(CONFIG.path.app, 'App/view/');
-		var arr = fs.readdirSync(viewPath);
-		arr.forEach(function (v, i) {
-			if (v.indexOf('config.') < 0) {
-				build.modules.push({
-					name: 'view/' + v + '/main'
-				});
-			}
-		});
-	})(build);
 	// Project configuration.
 	grunt.initConfig({
 		// Metadata.
@@ -57,7 +43,7 @@ module.exports = function (grunt) {
 					paths                  : {
 						jquery: "empty:"
 					},
-					modules                : build.modules
+					modules                : helper.getModules()
 				}
 			}
 		},
@@ -155,47 +141,6 @@ module.exports = function (grunt) {
 			}
 		}
 	});
-	grunt.registerTask('css-combo', 'css-combo stuff.', function () {
-		var cssPath = CONFIG.path.cssHome;
-		var bootstrapPath = CONFIG.path.bootstrap;
-		var viewNames = fs.readdirSync(cssPath);
-		viewNames.forEach(function (v, i) {
-			var target = path.join(cssPath, v, '/main.css');
-			var boo = fs.existsSync(target);
-			if (boo) {
-				var output = path.join(cssPath, v, '/main.css');
-				grunt.log.writeln('combo >>' + output);
-				cssCombo.build({
-						target        : target,
-						output        : output,
-						inputEncoding : 'UTF-8',
-						outputEncoding: 'UTF-8',
-						compress      : true,
-						debug         : false
-					},
-					function (err) {
-						if (err) {
-							grunt.log.writeln('combo >>' + err);
-						}
-					}
-				);
-			}
-		});
-		cssCombo.build({
-				target        : bootstrapPath,
-				output        : bootstrapPath,
-				inputEncoding : 'UTF-8',
-				outputEncoding: 'UTF-8',
-				compress      : true,
-				debug         : false
-			},
-			function (err) {
-				if (err) {
-					grunt.log.writeln('combo >>' + err);
-				}
-			}
-		);
-	});
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-requirejs');
 	grunt.loadNpmTasks('grunt-contrib-stylus');
@@ -203,6 +148,8 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-commands');
 	grunt.loadNpmTasks('grunt-wait-server');
 	grunt.loadNpmTasks('grunt-contrib-concat');
+	// css合并压缩
+	grunt.registerTask('css-combo', helper.exeCssCombo);
 	// 合并基础库
 	grunt.registerTask('concat_basic_lib', ['concat']);
 	// 编译stylus
