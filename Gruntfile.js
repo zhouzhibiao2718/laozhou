@@ -120,11 +120,14 @@ module.exports = function (grunt) {
 			}
 		},
 		command    : {
-			jetty : {
+			jetty        : {
 				cmd: 'mvn -D jetty.port=' + CONFIG.port + ' jetty:run > jetty.log'
 			},
-			weinre: {
+			weinre       : {
 				cmd: 'weinre --httpPort 8060 --boundHost -all-'
+			},
+			removeProduct: {
+				cmd: 'rm -rf src/main/product/'
 			}
 		},
 		wait_server: {
@@ -155,7 +158,7 @@ module.exports = function (grunt) {
 	// 编译stylus
 	grunt.registerTask('compile', ['stylus:views']);
 	// 发布环境
-	grunt.registerTask('production', ['compile', 'requirejs', 'css-combo']);
+	grunt.registerTask('production', ['command:removeProduct', 'compile', 'requirejs', 'css-combo']);
 	// 开发环境
 	grunt.registerTask('development', ['compile']);
 	// weinre远程调试模式
