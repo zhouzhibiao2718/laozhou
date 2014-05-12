@@ -27,11 +27,7 @@
 		<mvc:message-converters register-defaults="true">
 			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" p:supportedMediaTypes="application/json;charset=UTF-8">
 				<property name="objectMapper">
-					<bean class="com.fasterxml.jackson.databind.ObjectMapper">
-						<property name="serializationInclusion">
-							<value type="com.fasterxml.jackson.annotation.JsonInclude$Include">NON_NULL</value>
-						</property>
-					</bean>
+					<bean class="com.maizuo.web.filter.ObjectMappingCustomer"></bean>
 				</property>
 			</bean>
 		</mvc:message-converters>

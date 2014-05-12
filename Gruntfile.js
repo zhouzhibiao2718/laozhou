@@ -28,6 +28,7 @@ module.exports = function (grunt) {
 					generateSourceMaps     : true,
 					preserveLicenseComments: false,
 					optimizeCss            : 'none',
+					skipDirOptimize        : true,
 					uglify2                : {
 						compress: {
 							dead_code  : true,
@@ -158,9 +159,9 @@ module.exports = function (grunt) {
 	// 编译stylus
 	grunt.registerTask('compile', ['stylus:views']);
 	// 发布环境
-	grunt.registerTask('production', ['command:removeProduct', 'compile', 'requirejs', 'css-combo']);
+	grunt.registerTask('prod', ['command:removeProduct', 'compile', 'requirejs', 'css-combo']);
 	// 开发环境
-	grunt.registerTask('development', ['compile']);
+	grunt.registerTask('dev', ['compile']);
 	// weinre远程调试模式
 	grunt.registerTask('remote', ['command:jetty', 'command:weinre', 'wait_server:jetty', 'wait_server:weinre', 'watch']);
 	grunt.registerTask('remote-without-jetty', ['command:weinre', 'wait_server:weinre', 'watch']);
