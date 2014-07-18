@@ -15,5 +15,5 @@ body .padTop53{padding-top:104px;overflow:visible;}
 #content{tran:all .3s ease-in-out;}
 .sidebar-right-opened{right:0;margin-right:250px;}
 .sidebar-right-opened .navbar-fixed-top{margin-right:250px}
-}@media (min-width:1200px){body.fixed #wrap .navbar .navvar-fixed-top,body.fixed #footer .navbar .navvar-fixed-top,body.fixed #top .navbar .navvar-fixed-top{max-width:1170px;margin-left:auto;margin-right:auto}
+}@media (min-width: 1200px){body.fixed #wrap .navbar .navvar-fixed-top,body.fixed #footer .navbar .navvar-fixed-top,body.fixed #top .navbar .navvar-fixed-top{max-width:1170px;margin-left:auto;margin-right:auto}
 }

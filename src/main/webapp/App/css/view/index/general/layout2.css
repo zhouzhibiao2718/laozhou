@@ -1,9 +1,0 @@
-@media (min-width: 992px){.three-colums #content,.three-colums #right{float:left}
-.three-colums #right{display:block;padding:10px}
-.three-colums #left,.three-colums #right{width:20%}
-.three-colums #content{width:60%;margin:0 !important}
-}@media (min-width: 1200px){.three-colums #left,.three-colums #right{width:15%}
-.three-colums #content{width:70%}
-.three-colums .side-right #right{float:right;padding-top:20px}
-.three-colums .side-right #content{width:85%}
-}

@@ -37,21 +37,16 @@ body .padTop53{padding-top:104px;overflow:visible;}
 #content{-webkit-transition:all .3s ease-in-out;transition:all .3s ease-in-out;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .sidebar-right-opened{right:0;margin-right:250px;}
 .sidebar-right-opened .navbar-fixed-top{margin-right:250px}
-}@media (min-width:1200px){body.fixed #wrap .navbar .navvar-fixed-top,body.fixed #footer .navbar .navvar-fixed-top,body.fixed #top .navbar .navvar-fixed-top{max-width:1170px;margin-left:auto;margin-right:auto}
-}@media (min-width: 992px){.three-colums #content,.three-colums #right{float:left}
-.three-colums #right{display:block;padding:10px}
-.three-colums #left,.three-colums #right{width:20%}
-.three-colums #content{width:60%;margin:0 !important}
-}@media (min-width: 1200px){.three-colums #left,.three-colums #right{width:15%}
-.three-colums #content{width:70%}
-.three-colums .side-right #right{float:right;padding-top:20px}
-.three-colums .side-right #content{width:85%}
+}@media (min-width: 1200px){body.fixed #wrap .navbar .navvar-fixed-top,body.fixed #footer .navbar .navvar-fixed-top,body.fixed #top .navbar .navvar-fixed-top{max-width:1170px;margin-left:auto;margin-right:auto}
 }#top .navbar{margin-bottom:0;border-top:3px solid #cd0067}
 #top .navbar-brand{padding:0}
 #top .topnav{margin:10px 0;text-align:right;}
 @media (min-width: 768px){#top .topnav{float:right}
 }.head{border-bottom:1px solid rgba(0,0,0,0.3);box-shadow:0 1px 0 rgba(255,255,255,0.05) inset;text-shadow:0 1px 0 rgba(0,0,0,0.5);background-color:#333;}
-.head .search-bar{margin:0 auto;padding:10px 15px;border-bottom:1px solid rgba(0,0,0,0.3)}
+.head .search-bar{margin:0 auto;padding:10px 15px;border-bottom:1px solid rgba(0,0,0,0.3);-webkit-box-shadow:1px 0 rgba(255,255,255,0.05);box-shadow:1px 0 rgba(255,255,255,0.05);}
+.head .search-bar .main-search{border-bottom:1px solid #7c7c7c;}
+.head .search-bar .main-search input[type="text"]{background-color:transparent;border-color:transparent;color:#ccc;-webkit-box-shadow:;box-shadow:}
+.head .search-bar .main-search button,.head .search-bar .main-search input[type=submit]{background-color:transparent;border:transparent}
 .user-media{background-color:#444;}
 .user-media .user-link{display:block;margin-left:auto;margin-right:auto;position:relative}
 .user-media .user-img{margin:10px auto}
