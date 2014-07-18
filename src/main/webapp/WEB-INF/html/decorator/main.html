@@ -24,33 +24,33 @@
 
 	<sitemesh:write property='head'/>
 
-	<style>
-		.wrap {
-			float: left;
-			width: 100%;
-		}
+	<!--<style>-->
+	<!--.wrap {-->
+	<!--float: left;-->
+	<!--width: 100%;-->
+	<!--}-->
 
-		.wrap .left {
-			width: 25%;
-			float: left;
-			height: 400px;
-			border: 1px solid red;
-		}
+	<!--.wrap .left {-->
+	<!--width: 25%;-->
+	<!--float: left;-->
+	<!--height: 400px;-->
+	<!--border: 1px solid red;-->
+	<!--}-->
 
-		.wrap .content {
-			width: 50%;
-			float: left;
-			height: 400px;
-			border: 1px solid red;
-		}
+	<!--.wrap .content {-->
+	<!--width: 50%;-->
+	<!--float: left;-->
+	<!--height: 400px;-->
+	<!--border: 1px solid red;-->
+	<!--}-->
 
-		.wrap .right {
-			width: 25%;
-			float: left;
-			height: 400px;
-			border: 1px solid red;
-		}
-	</style>
+	<!--.wrap .right {-->
+	<!--width: 25%;-->
+	<!--float: left;-->
+	<!--height: 400px;-->
+	<!--border: 1px solid red;-->
+	<!--}-->
+	<!--</style>-->
 
 </head>
 <body>
@@ -60,6 +60,8 @@
 	<div th:include="decorator/header" th:remove="tag"></div>
 
 	<div class="wrap">
+		<div th:include="decorator/top" th:remove="tag"></div>
+
 		<div th:include="decorator/left" th:remove="tag"></div>
 
 		<div class="content"></div>
