@@ -9,8 +9,8 @@ body .padTop53{padding-top:104px;overflow:visible;}
 .sidebar-right-opened{position:relative;right:250px;}
 .sidebar-right-opened #right{right:0}
 .sidebar-right-opened.fixed .navbar-fixed-top{right:250px}
-@media (min-width: 768px){#left{position:relative;float:left;left:auto;}
-.siderbar-left-hidden #left{width:0;visibility:hidden}
+@media (min-width: 768px){#left{position:relative;float:left;left:auto}
+.sidebar-left-hidden #left{width:0;visibility:hidden}
 .sidebar-left-mini #left{width:50px}
 #content{tran:all .3s ease-in-out;}
 .sidebar-right-opened{right:0;margin-right:250px;}

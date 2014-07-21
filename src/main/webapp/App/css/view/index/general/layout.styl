@@ -51,35 +51,30 @@ body
 		.navbar-fixed-top
 			right 250px
 
-
-@media (min-width: 768px) {
-	#left {
+@media (min-width: 768px)
+	#left
 		position: relative
 		float: left;
 		left auto
 
-		.siderbar-left-hidden & {
+	.sidebar-left-hidden
+		#left
 			width 0
 			visibility hidden
-		}
-		.sidebar-left-mini & {
-			width 50px
-		}
-	}
 
-	#content {
+	.sidebar-left-mini
+		#left
+			width 50px
+
+	#content
 		tran all .3s ease-in-out
 		textOverflow()
-	}
 
-	.sidebar-right-opened {
+	.sidebar-right-opened
 		right 0
 		margin-right 250px
-		.navbar-fixed-top {
+		.navbar-fixed-top
 			margin-right 250px
-		}
-	}
-}
 
 @media (min-width: 1200px)
 	body.fixed
@@ -91,7 +86,5 @@ body
 					max-width 1170px
 					margin-left auto
 					margin-right auto
-
-
 
 /* ================== END Template Layout ============== */
