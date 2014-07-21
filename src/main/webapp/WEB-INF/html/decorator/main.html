@@ -56,23 +56,28 @@
 <body>
 
 <div class="viewport">
+	<div id="wrap">
+		<div th:include="decorator/header" th:remove="tag"></div>
 
-	<div th:include="decorator/header" th:remove="tag"></div>
+		<div class="wrap">
+			<div th:include="decorator/top" th:remove="tag"></div>
 
-	<div class="wrap">
-		<div th:include="decorator/top" th:remove="tag"></div>
+			<div th:include="decorator/left" th:remove="tag"></div>
 
-		<div th:include="decorator/left" th:remove="tag"></div>
+			<div id="content">
+				<div class="outer">
+					<div class="inner">
 
-		<div class="content"></div>
+					</div>
+				</div>
+			</div>
 
-		<div th:include="decorator/right" th:remove="tag"></div>
+			<div th:include="decorator/right" th:remove="tag"></div>
+		</div>
 	</div>
-
-
 	<div th:include="decorator/footer" th:remove="tag"></div>
-
 </div>
+
 <script src="/App/lib/basic.js">require([$('meta[name=view]').attr('content')]);</script>
 </body>
 </html>

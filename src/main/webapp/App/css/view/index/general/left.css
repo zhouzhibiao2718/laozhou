@@ -6,8 +6,8 @@
 .user-media .user-link .user-img{margin:10px}
 .user-media .user-link .user-label{top:6px;right:0}
 .user-media .media-body{display:block;float:left;margin-left:12px;}
-.user-media .media-body h5 .media-heading{color:#fff;padding-top:8px;margin-bottom:3px}
-.user-media .media-body ul .user-info li{color:#ccc}
+.user-media .media-body h5.media-heading{color:#fff;padding-top:8px;margin-bottom:3px}
+.user-media .media-body ul.user-info li{color:#ccc}
 .side-right .user-link,.side-right .user-label{left:6px;right:auto}
 .sidebar-left-mini .user-wrapper{position:absolute;top:0;left:-100%;display:none;min-width:250px}
 .user-media-toggleHover{display:none}

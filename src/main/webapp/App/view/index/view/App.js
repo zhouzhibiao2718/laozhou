@@ -17,7 +17,7 @@ define([
 		initializeVar: function () {
 		},
 		initializeEl: function () {
-			this.contentEl = this.$el.find('.content');
+			this.contentEl = this.$el.find('.inner');
 		},
 		initializeRouter: function () {
 			var me = this;
