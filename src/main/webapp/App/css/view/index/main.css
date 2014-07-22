@@ -32,7 +32,7 @@ body .padTop53{padding-top:104px;overflow:visible;}
 .sidebar-right-opened #right{right:0}
 .sidebar-right-opened.fixed .navbar-fixed-top{right:250px}
 @media (min-width: 768px){#left{position:relative;float:left;left:auto}
-.sidebar-left-hidden #left{width:0;visibility:hidden}
+.sidebar-left-hidden #left{position:absolute;-webkit-transform:translate(-250px);transform:translate(-250px);visibility:hidden}
 .sidebar-left-mini #left{width:50px}
 #content{-webkit-transition:all .3s ease-in-out;transition:all .3s ease-in-out;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .sidebar-right-opened{right:0;margin-right:250px;}
