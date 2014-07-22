@@ -40,5 +40,6 @@ $(function () {
 
 	$dropdownToggle.on('click', function () {
 		$dropdown.toggleClass('open');
+		return false;
 	})
 });

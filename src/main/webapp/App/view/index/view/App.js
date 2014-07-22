@@ -38,7 +38,7 @@ define([
 					}
 				},
 				main: function (query, page) {
-					me.contentEl.html('main');
+					me.contentEl.html(tpl);
 				}
 			});
 			new Workspace;
