@@ -1,60 +1,56 @@
 requirejs.config({
-	debug      : true,
+	debug: true,
 	waitSeconds: 15,
-	baseUrl    : '/App',
-	urlArgs    : "t=" + (typeof MAIZUO_UPDATE_TIME === 'undefined' ? (new Date()).getTime() : MAIZUO_UPDATE_TIME),
-	shim       : {
+	baseUrl: '/App',
+	urlArgs: "t=" + (typeof MAIZUO_UPDATE_TIME === 'undefined' ? (new Date()).getTime() : MAIZUO_UPDATE_TIME),
+	shim: {
 		underscore: {
 			deps: ['jquery']
 		},
-		backbone  : {
-			deps   : ['underscore'],
+		backbone: {
+			deps: ['underscore'],
 			exports: 'Backbone'
 		},
-		pep       : {
+		pep: {
 			deps: ['jquery']
 		},
-		cookie    : {
+		cookie: {
 			deps: ['jquery']
 		},
-		md5       : {
+		md5: {
 			deps: ['jquery']
 		}
 	},
-	paths      : {
+	paths: {
 
 		/* core */
-		jquery          : './lib/jquery/jquery',
-		underscore      : './lib/underscore/underscore',
-		backbone        : './lib/backbone/backbone',
-		domReady        : './lib/require/domReady',
+		jquery: './lib/jquery/jquery',
+		underscore: './lib/underscore/underscore',
+		backbone: './lib/backbone/backbone',
+		domReady: './lib/require/domReady',
 
 		/* requirejs plugins */
-		text            : './lib/require/text',
+		text: './lib/require/text',
 
 		/* underscore plugins */
-		string          : './lib/underscore/string',
+		string: './lib/underscore/string',
 		underscoreString: './lib/underscore/underscore.string',
 
 		/* asset */
-		JSON            : './lib/plugin/asset/JSON2/JSON2',
-		jstween         : './lib/plugin/asset/jstween-1.1/jstween-1.1',
-		PubSub          : './lib/plugin/jquery/PubSub/PubSub',
-		iscroll         : './lib/plugin/asset/iscroll/iscroll',
+		JSON: './lib/plugin/asset/JSON2/JSON2',
+		jstween: './lib/plugin/asset/jstween-1.1/jstween-1.1',
+		PubSub: './lib/plugin/jquery/PubSub/PubSub',
+		iscroll: './lib/plugin/asset/iscroll/iscroll',
 
 		/* jquery plugins */
-		pep             : './lib/plugin/jquery/pep/jquery.pep',
-		cookie          : './lib/plugin/jquery/cookie/jquery.cookie',
-		md5             : './lib/plugin/jquery/md5/jquery.md5',
-		base64          : './lib/plugin/jquery/base64/jquery.base64',
-		mockjax         : './lib/plugin/jquery/mockjax/jquery.mockjax',
-		countdown       : './lib/plugin/jquery/countdown/jquery.countdown',
-		lazyload        : './lib/plugin/jquery/lazyload/jquery.lazyload',
-		/* Util */
-		Tracer          : './util/Tracer',
-
-		/* Api */
-		BaseApi         : './Api/BaseApi/BaseApi'
+		pep: './lib/plugin/jquery/pep/jquery.pep',
+		cookie: './lib/plugin/jquery/cookie/jquery.cookie',
+		md5: './lib/plugin/jquery/md5/jquery.md5',
+		base64: './lib/plugin/jquery/base64/jquery.base64',
+		mockjax: './lib/plugin/jquery/mockjax/jquery.mockjax',
+		countdown: './lib/plugin/jquery/countdown/jquery.countdown',
+		lazyload: './lib/plugin/jquery/lazyload/jquery.lazyload',
+		'switch': './lib/plugin/jquery/switch/switch'
 	}
 });
 
@@ -75,9 +71,9 @@ requirejs.onError = function (err) {
 };
 
 _.templateSettings = {
-	evaluate   : /<@([\s\S]+?)@>/g,
+	evaluate: /<@([\s\S]+?)@>/g,
 	interpolate: /<@=([\s\S]+?)@>/g,
-	escape     : /<@-([\s\S]+?)@>/g
+	escape: /<@-([\s\S]+?)@>/g
 };
 
-eval($("script[src$='basic.js']").html());
+//eval($("script[src$='basic.js']").html());

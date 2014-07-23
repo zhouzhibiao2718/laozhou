@@ -48,7 +48,10 @@
 
 	<div th:include="decorator/footer" th:remove="tag"></div>
 </div>
-<script src="/App/lib/basic.js">require([$('meta[name=view]').attr('content')]);</script>
-<script src="/App/js/switch.js"></script>
+<script src="/App/lib/basic.js"></script>
+<script src="/App/config.js"></script>
+<script>
+	require([$('meta[name=view]').attr('content')]);
+</script>
 </body>
 </html>

@@ -2,7 +2,8 @@ define([
 	'require',
 	'text!../tpl/tpl.tpl',
 	'../data/Data',
-	'lazyload'
+	'lazyload',
+	'switch'
 ], function (require, tpl, data) {
 	return Backbone.View.extend({
 		el: $('.viewport'),

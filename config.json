@@ -12,9 +12,7 @@
 			"./src/main/webapp/App/lib/underscore/underscore.string.js",
 			"./src/main/webapp/App/lib/underscore/string.js",
 			"./src/main/webapp/App/lib/backbone/backbone.js",
-			"./src/main/webapp/App/lib/require/require.js",
-			"./src/main/webapp/App/util/Log.js",
-			"./src/main/webapp/App/config.js"
+			"./src/main/webapp/App/lib/require/require.js"
 		]
 	},
 	"port": 80
