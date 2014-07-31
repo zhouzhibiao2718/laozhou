@@ -25,7 +25,7 @@ public class IndexController extends BaseController {
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index(HttpServletRequest request, ModelMap m) {
-		User user = userService.getUserById(1);
+		User user = new User();//userService.getUserById(1);
 		m.put("user", user);
 		return "view/index";
 	}
@@ -33,7 +33,7 @@ public class IndexController extends BaseController {
 	@RequestMapping("/user/{userId}")
 	@ResponseBody
 	public Result user(HttpServletRequest request, ModelMap mm, @PathVariable int userId) {
-		User user = userService.getUserById(userId);
+		User user = new User();//userService.getUserById(userId);
 		if (user.getId() > 0) {
 			return result(0, user, "拉取用户数据成功!");
 		} else {
