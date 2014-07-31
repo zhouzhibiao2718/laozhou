@@ -1,4 +1,4 @@
-Maizuo Spring MVC Project Snapshot
+Maizuo Project Template
 -----------------------
 ### 相关说明:
 
