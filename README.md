@@ -1,8 +1,6 @@
-
-####Maizuo Spring MVC Project Snapshot
------------------------------------
-
-####相关说明:
+Maizuo Spring MVC Project Snapshot
+-----------------------
+### 相关说明:
 
 -	本项目是基于Spring MVC 3.1.X构建;
 
