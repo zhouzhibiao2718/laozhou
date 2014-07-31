@@ -52,11 +52,11 @@
 -  数据库相关:
 	-  /resources/jdbc.properties中配置有示例数据库相关信息;
 	-  /resources/springmvc.sql为数据库构表sql;
-	-  示例的数据库名为springmvc;
-	-  数据库默认连接的是mysql;
+	-  示例的数据库名为`springmvc`;
+	-  数据库默认连接的是`mysql`;
 
 -  页面模板:
-	-  本项目引入了thymeleaf模板支持,用于替换传统jsp页面模板;
+	-  本项目引入了`thymeleaf`模板支持,用于替换传统jsp页面模板;
 	-  thymeleaf相关资料可以直接查看:http://www.thymeleaf.org;
 
 - 本地Server容器:  
@@ -64,14 +64,14 @@
 
 - 启动示例项目:
 	-  建立好数据库,即可直接启动项目运行;
-	-  访问http://localhost即可以演示数据查询,页面跳转,thymeleaf页面数据渲染等逻辑;
-	-  访问http://localhost/user/1即可以演示数据查询,通过com.maizuo.domain.Result返回JSON格式数据等逻辑;
+	-  访问`http://localhost`即可以演示数据查询,页面跳转,thymeleaf页面数据渲染等逻辑;
+	-  访问`http://localhost/user/1`即可以演示数据查询,通过com.maizuo.domain.Result返回JSON格式数据等逻辑;
 
 - 同步服务器端git项目代码:
-	-  初次通过git clone ssh://git@192.168.1.203:10000/springmvc_template.git
+	-  初次通过 `git clone ssh://git@192.168.1.203:10000/springmvc_template.git`
 	-  拉取到本来的代码为样板代码;
 	-  每次新启一个项目,git管理员会重新生成一个git源;
-	-  请先删除刚才通过git clone拉取到本地的项目目录(默认为springmvc_template,可以根据项目自定义)中的.git文件夹;
+	-  请先删除刚才通过`git clone`拉取到本地的项目目录(`默认为springmvc_template`,可以根据项目自定义)中的`.git`文件夹;
 	-  然后根据git管理员提供的git源地址,拉取正式项目的git记录, 将刚才拉取的样板文件全部放到正式项目的文件夹,
 	-  执行git上传等操作既可完成与服务器端git项目代码的同步;  
 - 静态文件目录:
