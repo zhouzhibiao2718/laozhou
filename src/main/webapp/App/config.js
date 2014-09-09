@@ -76,4 +76,4 @@ _.templateSettings = {
 	escape: /<@-([\s\S]+?)@>/g
 };
 
-//eval($("script[src$='basic.js']").html());
+eval($("script[src$='config.js']").html());

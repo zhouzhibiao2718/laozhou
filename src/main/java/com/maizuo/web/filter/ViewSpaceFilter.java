@@ -39,8 +39,7 @@ public class ViewSpaceFilter implements Filter {
 				httpRequest.getSession().setAttribute(Constant.LOGIN_TO_URL, toUrl);
 
 				// ②-5转发到登录页面
-				request.getRequestDispatcher("/login.jsp").forward(request,
-						response);
+				request.getRequestDispatcher("/login").forward(request,response);
 				return;
 			}
 			chain.doFilter(request, response);

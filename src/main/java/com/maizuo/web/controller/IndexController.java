@@ -23,17 +23,23 @@ public class IndexController extends BaseController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	@RequestMapping(value = {"/", "/index"},method = RequestMethod.GET)
 	public String index(HttpServletRequest request, ModelMap m) {
 		User user = new User();//userService.getUserById(1);
 		m.put("user", user);
 		return "view/index";
 	}
 
+	@RequestMapping(value = {"/login"},method = RequestMethod.GET)
+	public String login(HttpServletRequest request, ModelMap m) {
+		return "view/login";
+	}
+
 	@RequestMapping("/user/{userId}")
 	@ResponseBody
 	public Result user(HttpServletRequest request, ModelMap mm, @PathVariable int userId) {
-		User user = new User();//userService.getUserById(userId);
+//		User user = new User();
+		User user=userService.getUserById(userId);
 		if (user.getId() > 0) {
 			return result(0, user, "拉取用户数据成功!");
 		} else {

@@ -1,4 +1,3 @@
-/*global module:false*/
 module.exports = function (grunt) {
 	var fs = require('fs');
 	var path = require('path');
@@ -7,134 +6,135 @@ module.exports = function (grunt) {
 	if (!CONFIG) {
 		throw new Error('missing config.json');
 	}
+
+	var changedFiles = {};
+
+	var onStylusChange = grunt.util._.debounce(function () {
+		grunt.config('stylus.compile.files', changedFiles);
+		changedFiles = {};
+	}, 200);
+
+	grunt.event.on('watch', function (action, filePath, taskName) {
+		if (taskName.trim() == 'stylus') {
+			changedFiles[filePath.replace('.styl', '.css')] = filePath;
+			onStylusChange();
+		}
+	});
+
 	// Project configuration.
 	grunt.initConfig({
 		// Metadata.
-		pkg        : grunt.file.readJSON('package.json'),
-		banner     : '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
-			'<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-			'<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
-			'* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-			' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
-		// Task configuration.
-		requirejs  : {
-			compile: {
-				options: {
-					appDir                 : CONFIG.path.app,
-					mainConfigFile         : path.join(CONFIG.path.app, 'App/config.js'),
-					baseUrl                : 'App',
-					dir                    : CONFIG.path.product,
-					optimize               : 'uglify2',
-					generateSourceMaps     : true,
-					preserveLicenseComments: false,
-					optimizeCss            : 'none',
-					skipDirOptimize        : true,
-					uglify2                : {
-						compress: {
-							dead_code  : true,
-							unused     : true,
-							global_defs: {
-								//打包的时候关闭调试模式
-								MAIZUO_DEBUG      : false,
-								//记录系统发布时间
-								MAIZUO_UPDATE_TIME: (new Date()).getTime()
-							}
-						}
-					},
-					paths                  : {
-						jquery: "empty:"
-					},
-					modules                : helper.getModules()
-				}
-			}
+		pkg: grunt.file.readJSON('package.json'),
+		meta: {
+			version: '0.1.0'
 		},
-		concat     : {
+		requirejs: helper.getRequireConfig(),
+		concat: {
 			options: {
 				separator: ';'
 			},
-			dist   : {
-				src : CONFIG.lib.basic,
+			dist: {
+				src: CONFIG.lib.basic,
 				dest: path.join(CONFIG.path.app, 'App/lib/basic.js')
 			}
 		},
-		uglify     : {
-			options: {
-				banner: '<%= banner %>'
+		stylus: {
+			local: {
+				options: {
+					compress: false,
+					'include css': true,
+					paths: [path.join(CONFIG.path.app, 'App/css/')],
+					urlfunc: 'embedurl',
+					use: [
+					],
+					define: {
+						DEVE: true
+					},
+					import: [
+						'global/helper'
+					]
+				},
+				files: changedFiles
 			},
-			dist   : {
-				src : '<%= concat.dist.dest %>',
-				dest: 'dist/<%= pkg.name %>.min.js'
+			deve: {
+				options: {
+					compress: false,
+					'include css': true,
+					paths: [path.join(CONFIG.path.app, 'App/css/')],
+					urlfunc: 'embedurl',
+					use: [
+					],
+					define: {
+						DEVE: true
+					},
+					import: [
+						'global/helper'
+					]
+				},
+				expand: true,
+				cwd: path.join(CONFIG.path.app, 'App/css/view/'),
+				src: '**/*.styl',
+				dest: path.join(CONFIG.path.app, 'App/css/view/'),
+				ext: '.css'
+			},
+			prod: {
+				options: {
+					compress: true,
+					'include css': true,
+					paths: [path.join(CONFIG.path.app, 'App/css/')],
+					urlfunc: 'embedurl',
+					use: [
+					],
+					define: {
+						DEVE: false
+					},
+					import: [
+						'global/helper'
+					]
+				},
+				expand: true,
+				cwd: path.join(CONFIG.path.app, 'App/css/view/'),
+				src: '**/*.styl',
+				dest: path.join(CONFIG.path.app, 'App/css/view/'),
+				ext: '.css'
 			}
 		},
-		jshint     : {
-			options  : {
-				curly  : true,
-				eqeqeq : true,
-				immed  : true,
-				latedef: true,
-				newcap : true,
-				noarg  : true,
-				sub    : true,
-				undef  : true,
-				unused : true,
-				boss   : true,
-				eqnull : true,
-				browser: true,
-				globals: {
-					jQuery: true
+		watch: {
+			stylus: {
+				files: path.join(CONFIG.path.app, 'App/css/**/**.styl'),
+				tasks: ['stylus:local'],
+				options: {
+					spawn: false
 				}
 			},
-			gruntfile: {
-				src: 'Gruntfile.js'
-			},
-			lib_test : {
-				src: ['lib/**/*.js', 'test/**/*.js']
-			}
-		},
-		qunit      : {
-			files: ['test/**/*.html']
-		},
-		stylus     : {
-			views: {
-				expand : true,
-				options: {},
-				src    : [path.join(CONFIG.path.app, 'App/css/view/**/**.styl')],
-				ext    : '.css'
-			}
-		},
-		watch      : {
-			stylus_views: {
-				files: path.join(CONFIG.path.app, 'App/css/view/**/**.styl'),
-				tasks: ['stylus:views']
-			},
-			js          : {
-				files  : path.join(CONFIG.path.app, '**/**.js'),
+			js: {
+				files: path.join(CONFIG.path.app, 'App/view/**/**.js'),
 				options: {
 					livereload: true
 				}
 			},
-			css         : {
-				files  : path.join(CONFIG.path.app, 'App/css/view/**/**.css'),
+			css: {
+				files: path.join(CONFIG.path.app, 'App/css/view/**/**.css'),
 				options: {
 					livereload: true
 				}
 			}
 		},
-		command    : {
-			jetty        : {
+		command: {
+			jetty: {
 				cmd: 'mvn -D jetty.port=' + CONFIG.port + ' jetty:run > jetty.log'
 			},
-			weinre       : {
-				cmd: 'weinre --httpPort 8060 --boundHost -all-'
+			backend: {
+				cmd: 'start mvn -D jetty.port=' + CONFIG.port + ' jetty:run'
 			},
-			removeProduct: {
-				cmd: 'rm -rf src/main/product/'
+			weinre: {
+				cmd: 'weinre --httpPort 8060 --boundHost -all-'
 			}
 		},
 		wait_server: {
-			jetty : {
+			jetty: {
 				options: {
-					url    : 'http://localhost:' + CONFIG.port,
+					url: 'http://localhost:' + CONFIG.port,
 					timeout: 20 * 1000
 				}
 			},
@@ -145,6 +145,7 @@ module.exports = function (grunt) {
 			}
 		}
 	});
+
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-requirejs');
 	grunt.loadNpmTasks('grunt-contrib-stylus');
@@ -152,19 +153,24 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-commands');
 	grunt.loadNpmTasks('grunt-wait-server');
 	grunt.loadNpmTasks('grunt-contrib-concat');
-	// css合并压缩
-	grunt.registerTask('css-combo', helper.exeCssCombo);
-	// 合并基础库
-	grunt.registerTask('concat_basic_lib', ['concat']);
 	// 编译stylus
-	grunt.registerTask('compile', ['stylus:views']);
+	grunt.registerTask('compile', ['stylus:prod']);
+	// 从IDE迁移到Grunt
+	grunt.registerTask('migrate', ['clean:map', 'compile']);
+	grunt.registerTask('update_basic', helper.updateBasic);
+	// 合并基础库
+	grunt.registerTask('concat_basic_lib', ['concat', 'update_basic:basic']);
 	// 发布环境
-	grunt.registerTask('prod', ['command:removeProduct', 'compile', 'requirejs', 'css-combo']);
+	grunt.registerTask('prod', ['stylus:prod', 'requirejs']);
 	// 开发环境
-	grunt.registerTask('dev', ['compile']);
+	grunt.registerTask('deve', ['stylus:deve']);
+
 	// weinre远程调试模式
 	grunt.registerTask('remote', ['command:jetty', 'command:weinre', 'wait_server:jetty', 'wait_server:weinre', 'watch']);
 	grunt.registerTask('remote-without-jetty', ['command:weinre', 'wait_server:weinre', 'watch']);
 	// 调试开发模式
+	grunt.registerTask('backend', ['command:backend', 'wait_server:jetty', 'watch']);
+	grunt.registerTask('backend-with-remote', ['command:backend', 'command:weinre', 'wait_server:jetty', 'wait_server:weinre', 'watch']);
 	grunt.registerTask('default', ['command:jetty', 'wait_server:jetty', 'watch']);
+
 };

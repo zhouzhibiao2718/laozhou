@@ -1,17 +1,23 @@
-define(['text!../tpl/tpl.tpl', '../data/Data', 'lazyload'], function (tpl, data) {
-	return Backbone.View.extend({
-		tagName   : "li",
-		className : "document-row",
-		events    : {
-			"click .icon"         : "open",
-			"click .button.delete": "destroy"
-		},
-		initialize: function () {
-			$('img.img-lazy-load').lazyload({
-				threshold: 200,
-				effect   : 'fadeIn'
+define(
+		[
+			'text!../tpl/tpl.tpl'
+		]
+		, function (tpl) {
+			return Backbone.View.extend({
+				events: {
+					"click .icon": "open",
+					"click .button.delete": "destroy"
+				},
+				initialize: function () {
+					$('.list-inline li > a').click(function () {
+						var activeForm = $(this).attr('href') + ' > form';
+						//console.log(activeForm);
+						$(activeForm).addClass('magictime swap');
+						//set timer to 1 seconds, after that, unload the magic animation
+						setTimeout(function () {
+							$(activeForm).removeClass('magictime swap');
+						}, 1000);
+					});
+				}
 			});
-			return $(window).trigger('scroll');
-		}
-	});
-});
+		});

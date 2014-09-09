@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title></title>
+	<meta name="view" content="view/login/main"/>
+	<link rel="stylesheet" href="/App/assets/lib/bootstrap/css/bootstrap.css"/>
+	<link rel="stylesheet" href="/App/assets/lib/font-awesome/css/font-awesome.css">
+	<link rel="stylesheet" href="/App/assets/css/main.css"/>
+	<link rel="stylesheet" href="/App/assets/lib/magic/magic.css"/>
+</head>
+<body class="login">
+<div class="container">
+	<div class="text-center">
+		<img src="/App/image/global/logo/logo_white.png" alt="Metis Logo">
+	</div>
+	<div class="tab-content">
+		<div id="login" class="tab-pane active">
+			<form action="/user/login" class="form-signin" method="post">
+				<p class="text-muted text-center">
+					Enter your username and password
+				</p>
+				<input type="text" placeholder="Username" class="form-control">
+				<input type="password" placeholder="Password" class="form-control">
+				<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+			</form>
+		</div>
+		<div id="forgot" class="tab-pane">
+			<form action="/user/login" class="form-signin" method="post">
+				<p class="text-muted text-center">Enter your valid e-mail</p>
+				<input type="email" placeholder="mail@domain.com" required="required" class="form-control">
+				<br>
+				<button class="btn btn-lg btn-danger btn-block" type="submit">Recover Password</button>
+			</form>
+		</div>
+		<div id="signup" class="tab-pane">
+			<form action="/user/login" class="form-signin" method="post">
+				<input type="text" placeholder="username" class="form-control">
+				<input type="email" placeholder="mail@domain.com" class="form-control">
+				<input type="password" placeholder="password" class="form-control">
+				<button class="btn btn-lg btn-success btn-block" type="submit">Register</button>
+			</form>
+		</div>
+	</div>
+	<div class="text-center">
+		<ul class="list-inline">
+			<li><a class="text-muted" href="#login" data-toggle="tab">Login</a></li>
+			<li><a class="text-muted" href="#forgot" data-toggle="tab">Forgot Password</a></li>
+			<li><a class="text-muted" href="#signup" data-toggle="tab">Signup</a></li>
+		</ul>
+	</div>
+</div>
+<!-- /container -->
+<script src="/App/lib/basic.js"></script>
+<script src="/App/config.js">
+	require([$('meta[name=view]').attr('content')]);
+</script>
+</body>
+</html>

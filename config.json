@@ -1,13 +1,15 @@
 {
 	"path": {
-		"app"      : "./src/main/webapp/",
-		"product"  : "./src/main/product/",
-		"cssHome"  : "./src/main/product/App/css/view",
+		"app": "./src/main/webapp/",
+		"product": "./src/main/product/",
+		"cssHome": "./src/main/product/App/css/view",
 		"bootstrap": "./src/main/product/App/css/bootstrap/css/bootstrap.css"
 	},
-	"lib" : {
+	"lib": {
 		"basic": [
 			"./src/main/webapp/App/lib/jquery/jquery.js",
+			"./src/main/webapp/App/assets/lib/bootstrap/js/bootstrap.js",
+			"./src/main/webapp/App/lib/plugin/jquery/bootbox/bootbox.js",
 			"./src/main/webapp/App/lib/underscore/underscore.js",
 			"./src/main/webapp/App/lib/underscore/underscore.string.js",
 			"./src/main/webapp/App/lib/underscore/string.js",

@@ -8,86 +8,83 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
-	<!-- 扫描com.maizuo.dao包下所有标注@Repository的DAO组件 -->
-	<context:component-scan base-package="com.maizuo.dao"/>
-	<!-- 扫描com.maizuo.service包下所有标注@Service的服务组件 -->
-	<context:component-scan base-package="com.maizuo.service"/>
+    <!-- 扫描com.maizuo.dao包下所有标注@Repository的DAO组件 -->
+    <context:component-scan base-package="com.maizuo.dao"/>
+    <!-- 扫描com.maizuo.service包下所有标注@Service的服务组件 -->
+    <context:component-scan base-package="com.maizuo.service"/>
 
-	<!-- 数据访问层配置 -->
-	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="location" value="classpath:jdbc.properties"/>
-	</bean>
-	<bean id="dataSource"
-	      class="org.apache.commons.dbcp.BasicDataSource"
-	      destroy-method="close"
-	     />
+    <!-- 数据访问层配置 -->
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:jdbc.properties"/>
+    </bean>
+    <bean id="dataSource"
+          class="org.apache.commons.dbcp.BasicDataSource"
+          destroy-method="close"
+          p:driverClassName="${jdbc.driverClassName}"
+          p:url="${jdbc.url}"
+          p:username="${jdbc.username}"
+          p:password="${jdbc.password}"
+            />
 
+    <!-- sessionFactory & Hibernate & EHCache相关支持  -->
     <!--
-            p:driverClassName="${jdbc.driverClassName}"
-	      p:url="${jdbc.url}"
-	      p:username="${jdbc.username}"
-	      p:password="${jdbc.password}"
+        <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+            <property name="dataSource" ref="dataSource"/>
+            <property name="packagesToScan" value="com.maizuo.entity"/>
+            <property name="hibernateProperties">
+                <props>
+                    <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                    <prop key="hibernate.show_sql">true</prop>
+                    <prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+                    <prop key="hibernate.cache.use_second_level_cache">true</prop>
+                    <prop key="hibernate.cache.use_query_cache">true</prop>
+                </props>
+            </property>
+        </bean>
+
+        <bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate" p:sessionFactory-ref="sessionFactory"/>
+
+        &lt;!&ndash; 基于EHCache的系统缓存管理器&ndash;&gt;
+        <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" p:configLocation="classpath:ehcache.xml"/>
+
+        &lt;!&ndash;服务层配置 &ndash;&gt;
+        <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager" p:sessionFactory-ref="sessionFactory"/>
+
+        <aop:config>
+            <aop:pointcut id="serviceMethod" expression="execution(* com.maizuo.service.*Service.*(..))"/>
+            <aop:advisor pointcut-ref="serviceMethod" advice-ref="txAdvice"/>
+        </aop:config>
+        <tx:advice id="txAdvice" transaction-manager="transactionManager">
+            <tx:attributes>
+                <tx:method name="query*" read-only="true"/>
+                <tx:method name="get*" read-only="true"/>
+                <tx:method name="add*"/>
+                <tx:method name="save*"/>
+                <tx:method name="remove*"/>
+                <tx:method name="update*"/>
+            </tx:attributes>
+        </tx:advice>
     -->
 
-	<!-- sessionFactory & Hibernate & EHCache相关支持  -->
-	<!--
-		<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
-			<property name="dataSource" ref="dataSource"/>
-			<property name="packagesToScan" value="com.maizuo.entity"/>
-			<property name="hibernateProperties">
-				<props>
-					<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-					<prop key="hibernate.show_sql">true</prop>
-					<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
-					<prop key="hibernate.cache.use_second_level_cache">true</prop>
-					<prop key="hibernate.cache.use_query_cache">true</prop>
-				</props>
-			</property>
-		</bean>
+    <!--httpClientFactory配置 -->
+    <bean id="httpClientFactory" class="org.springframework.http.client.SimpleClientHttpRequestFactory">
+        <!--
+        <property name="connectTimeout" value="60"/>
+        <property name="readTimeout" value="60"/>
+        -->
+    </bean>
 
-		<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate" p:sessionFactory-ref="sessionFactory"/>
+    <!-- jdbcTemplate注入 -->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource">
+            <ref bean="dataSource"/>
+        </property>
+    </bean>
 
-		&lt;!&ndash; 基于EHCache的系统缓存管理器&ndash;&gt;
-		<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" p:configLocation="classpath:ehcache.xml"/>
-
-		&lt;!&ndash;服务层配置 &ndash;&gt;
-		<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager" p:sessionFactory-ref="sessionFactory"/>
-
-		<aop:config>
-			<aop:pointcut id="serviceMethod" expression="execution(* com.maizuo.service.*Service.*(..))"/>
-			<aop:advisor pointcut-ref="serviceMethod" advice-ref="txAdvice"/>
-		</aop:config>
-		<tx:advice id="txAdvice" transaction-manager="transactionManager">
-			<tx:attributes>
-				<tx:method name="query*" read-only="true"/>
-				<tx:method name="get*" read-only="true"/>
-				<tx:method name="add*"/>
-				<tx:method name="save*"/>
-				<tx:method name="remove*"/>
-				<tx:method name="update*"/>
-			</tx:attributes>
-		</tx:advice>
-	-->
-
-	<!--httpClientFactory配置 -->
-	<bean id="httpClientFactory" class="org.springframework.http.client.SimpleClientHttpRequestFactory">
-		<!--
-		<property name="connectTimeout" value="60"/>
-		<property name="readTimeout" value="60"/>
-		-->
-	</bean>
-
-	<!-- jdbcTemplate注入 -->
-	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-		<property name="dataSource">
-			<ref bean="dataSource"/>
-		</property>
-	</bean>
-
-	<!--restTemplate注入-->
-	<bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
-		<constructor-arg ref="httpClientFactory"/>
-	</bean>
+    <!--restTemplate注入-->
+    <bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
+        <constructor-arg ref="httpClientFactory"/>
+    </bean>
 
 </beans>
   
