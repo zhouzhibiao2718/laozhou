@@ -86,5 +86,11 @@
         <constructor-arg ref="httpClientFactory"/>
     </bean>
 
+    <bean id="DateUtil" class="com.maizuo.util.dateUtil.DateUtil"/>
+
+    <bean id="NumberUtils" class="org.apache.commons.lang.math.NumberUtils"/>
+
+    <bean id="StringUtils" class="org.apache.commons.lang.StringUtils"/>
+
 </beans>
   

@@ -3,7 +3,6 @@ package com.maizuo.web.controller;
 import com.maizuo.constant.Constant;
 import com.maizuo.domain.Result;
 import com.maizuo.entity.User;
-import com.maizuo.tool.Util;
 
 import javax.servlet.http.HttpServletRequest;
 

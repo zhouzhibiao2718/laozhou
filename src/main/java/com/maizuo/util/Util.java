@@ -1,4 +1,4 @@
-package com.maizuo.tool;
+package com.maizuo.util;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;

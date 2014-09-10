@@ -46,7 +46,6 @@ var getModules = function () {
 };
 
 var getRequireConfig = function () {
-	console.info(getModules());
 	return {
 		compile: {
 			options: {

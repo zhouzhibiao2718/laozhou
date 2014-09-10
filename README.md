@@ -58,6 +58,12 @@ Maizuo Project Template
 -  页面模板:
 	-  本项目引入了`thymeleaf`模板支持,用于替换传统jsp页面模板;
 	-  thymeleaf相关资料可以直接查看:http://www.thymeleaf.org;
+	-  项目模板(视图文件)的定义在WEB-INF/viewspace-servlet.xml文件里,对应的是id="templateResolver"的bean定义;
+	-  视图文件在WEB-INF/html/view/目录下;
+	
+-  SiteMesh支持:
+	-  本项目引入了`SiteMesh`支持,用于页面模板装饰;
+	-  `SiteMesh`配置在WEB-INF/sitemesh3.xml中,模板装饰文件在WEB-INF/html/decorator/下;
 
 - 本地Server容器:  
 	- 默认Server容器为jetty,相关配置在pom.xml最下方;
@@ -68,7 +74,7 @@ Maizuo Project Template
 	-  访问`http://localhost/user/1`即可以演示数据查询,通过com.maizuo.domain.Result返回JSON格式数据等逻辑;
 
 - 同步服务器端git项目代码:
-	-  初次通过 `git clone ssh://git@192.168.1.203:10000/springmvc_template.git`
+	-  初次通过 `git clone git@192.168.1.205:table/springmvc_template.git`
 	-  拉取到本来的代码为样板代码;
 	-  每次新启一个项目,git管理员会重新生成一个git源;
 	-  请先删除刚才通过`git clone`拉取到本地的项目目录(`默认为springmvc_template`,可以根据项目自定义)中的`.git`文件夹;
@@ -76,6 +82,7 @@ Maizuo Project Template
 	-  执行git上传等操作既可完成与服务器端git项目代码的同步;  
 - 静态文件目录:
 	- /App
+	    - /assets Bootstrap-Admin-Template开源项目提供的各类插件集,请勿向该文件夹添加或删除任务文件,需要使用相关插件请直接在Config.js里进行配置即可
 		- /css    css文件
 		- /bootstrap boostrap目录 项目基础css库采用bootstrap 无需另外添加css reset等代码
 		- /image  图片文件
@@ -87,3 +94,4 @@ Maizuo Project Template
 - 更新日志:
 	- 2014-04-25: 新建了dao分支,演示了Hibernate泛型DAO的使用,具体代码逻辑请查看dao分支;
 	- 2014-05-06: 将jackson的版本升级到了2.3.3,处理了通@ResponseBody往前台写json格式数据未处理字段返回NULL的问题;
+	- 2014-09-10: 增加com.maizuo.util.dateUtil.DateUtil时间日期工具类;
