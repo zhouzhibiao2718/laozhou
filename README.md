@@ -94,4 +94,6 @@ Maizuo Project Template
 - 更新日志:
 	- 2014-04-25: 新建了dao分支,演示了Hibernate泛型DAO的使用,具体代码逻辑请查看dao分支;
 	- 2014-05-06: 将jackson的版本升级到了2.3.3,处理了通@ResponseBody往前台写json格式数据未处理字段返回NULL的问题;
-	- 2014-09-10: 增加com.maizuo.util.dateUtil.DateUtil时间日期工具类;
+	- 2014-09-10: 
+		- 增加com.maizuo.util.dateUtil.DateUtil时间日期工具类;
+		- 增加Spring MVC拦截器示例,具体参照WEB-INF/viewspace-servlet.xml配置;
