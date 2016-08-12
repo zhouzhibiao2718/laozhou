@@ -2,3 +2,13 @@ language: java
 
 jdk:
   - oraclejdk7
+  
+ services:
+- docker
+
+install:
+- docker build -t reg.maizuo.com/springmvc_template:v1.0 .
+- docker run -d -p reg.maizuo.com:80:8081 --name blog blog
+
+script:
+- docker ps | grep -q blog

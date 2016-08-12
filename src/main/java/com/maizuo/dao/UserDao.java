@@ -16,12 +16,12 @@ public class UserDao {
     private JdbcTemplate jdbcTemplate;
 
     public User getUserById(final int id) {
-        String sql = "SELECT * FROM User WHERE id=?";
+    	String sql = "SELECT view_name,email FROM t_userinfo WHERE id=?";
         final User user = new User();
         jdbcTemplate.query(sql, new Object[]{id}, new RowCallbackHandler() {
             public void processRow(ResultSet rs) throws SQLException {
                 user.setId(id);
-                user.setUserName(rs.getString("userName"));
+                user.setUserName(rs.getString("view_name"));
                 user.setEmail(rs.getString("email"));
             }
         });
