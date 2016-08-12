@@ -7,7 +7,7 @@ services:
  - docker
 
 install:
- - docker build -t reg.maizuo.com/springmvc_template:v3.0 .
- - docker run -d -p reg.maizuo.com:80:8081 --name springmvc_template springmvc_template:v3.0
+ - docker build -t springmvc_template:v3.0 .
+ - docker run -d -p 127.0.0.1:80:8081 --name springmvc_template springmvc_template:v3.0
 
 
