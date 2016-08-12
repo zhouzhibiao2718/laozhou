@@ -1,4 +1,4 @@
-FROM reg.maizuo.com/tomcat:7.0.69
+FROM 192.168.1.203/tomcat:7.0.69
 RUN rm /etc/localtime && \
     ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 ENV JAVA_OPTS $JAVA_OPTS -Duser.timezone=GMT+08"
